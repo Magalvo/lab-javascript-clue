@@ -128,10 +128,6 @@ function selectRandom(arr) {
 selectRandom(roomsArray)
 
 
-
-
-
-
 /* function pickMystery() {
   let pickIt = [];
   let room = selectRandom(roomsArray);
@@ -160,11 +156,24 @@ function pickMystery() {
 }
 // ITERATION 3
 
-function revealMystery(object) {
+/* function revealMystery(object) {
+  const { suspect, weapon, room } = object;
+  console.log(`${suspect.firstName} ${suspect.lastName} killed Mr. Boddy using the ${weapon.name} in the ${room.name}!`)
+  return `${suspect.firstName} ${suspect.lastName} killed Mr. Boddy using the ${weapon.name} in the ${room.name}!`;
+}
+ */
+
+/* function revealMystery(object) {
   const { suspect, weapon, room } = object;
   return `${suspect.firstName} ${suspect.lastName} killed Mr. Boddy using the ${weapon.name} in the ${room.name}!`;
 }
+ */
 
-revealMystery(pickMystery(card));
+function revealMystery(object) {
+  return `${object.suspect.firstName} ${object.suspect.lastName} killed Mr. Boddy using the ${object.weapon.name} in the ${object.room.name}!`;
+}
+
+
+revealMystery(pickMystery());
 
 selectRandom(roomsArray);
