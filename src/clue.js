@@ -104,18 +104,67 @@ const weaponsArray = [
 
 // ITERATION 2
 
-function selectRandom(arr) {
+/* function selectRandom(arr) {
   const min = 0;
   const max = arr.length;
-  const randomInteger = Math.floor(Math.random() * (max - min + 1)) + min;
-  console.log(roomsArray[randomInteger].name);
-  return roomsArray[randomInteger].name;
+  const randomInteger = Math.floor(Math.random() * arr.length);
+  console.log(arr[randomInteger]);
+  return arr[randomInteger];
+} */
+
+function selectRandom(arr) {
+
+  if(!arr.length){
+    return undefined;
+  }
+
+  const min = 1;
+  const max = arr.length;
+  const randomInteger = Math.floor(Math.random() * (max - min + 1));
+
+  return arr[randomInteger]; 
+} 
+
+selectRandom(roomsArray)
+
+
+
+
+
+
+/* function pickMystery() {
+  let pickIt = [];
+  let room = selectRandom(roomsArray);
+  let weapon = selectRandom(weaponsArray);
+  let suspect = selectRandom(suspectsArray);
+  pickIt.push(suspect);
+  pickIt.push(weapon.name);
+  pickIt.push(room.name);
+  console.log(pickIt);
+  return pickIt;
 }
 
-function pickMystery() {}
+pickMystery()
+ */
 
+function pickMystery() {
+  const room = selectRandom(roomsArray);
+  const weapon = selectRandom(weaponsArray);
+  const suspect = selectRandom(suspectsArray);
+  let card = {
+    suspect: suspect,
+    weapon: weapon,
+    room:room
+  }
+  return card;
+}
 // ITERATION 3
 
-function revealMystery() {}
+function revealMystery(object) {
+  const { suspect, weapon, room } = object;
+  return `${suspect.firstName} ${suspect.lastName} killed Mr. Boddy using the ${weapon.name} in the ${room.name}!`;
+}
+
+revealMystery(pickMystery(card));
 
 selectRandom(roomsArray);
